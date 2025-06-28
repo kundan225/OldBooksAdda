@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 //require('dotenv').config();
 
-//const mongoUrl = 'mongodb://localhost:27017/OldBooksAdda';
-
 //const mongoUrl= process.env.LOCAL_URL
 
 const mongoUrl= process.env.DB_URL;
