@@ -42,20 +42,6 @@ router.post('/upload', uploadFields, async (req, res) => {
   }
 
   try {
-    // const book = new Book({
-    //   book_name,
-    //   auther_name,
-    //   category_name,
-    //   subcategory_name,
-    //   sell_type,
-    //   sell_price,
-    //   latitude,
-    //   longitude,
-    //   image1: req.files.image1?.[0]?.filename,
-    //   image2: req.files.image2?.[0]?.filename,
-    //   image3: req.files.image3?.[0]?.filename
-    // });
-
     const book = new Book({
   book_name,
   auther_name,
@@ -75,6 +61,8 @@ router.post('/upload', uploadFields, async (req, res) => {
     await book.save();
     res.status(201).json({ message: 'Book uploaded', data: book });
   } catch (err) {
+      console.error("Upload error:", err); // ← Add this line
+
     res.status(500).json({ error: 'Server error', detail: err.message });
   }
 });
