@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const Book = require('../models/Book');
 const router = express.Router();
+const BooksCategory = require('../models/BooksCategory');
+
 
 // Multer storage
 const storage = multer.diskStorage({
@@ -125,6 +127,17 @@ router.get('/', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+// GET all book categories
+router.get('/', async (req, res) => {
+  try {
+    const categories = await BooksCategory.find();
+    res.status(200).json(categories);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
